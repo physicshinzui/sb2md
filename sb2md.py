@@ -20,7 +20,10 @@ def main():
     for i, page in enumerate(pages):
         print(f"\nPage No. {i}")
         print(page['title'])
-        title = page['title'].replace('/','-')
+        title = page['title'].replace('/','-') 
+        # ^ This replacement is to avoid the error of openinig file below.
+        # If title includes /, open() may say "Not such a directory".
+
         with open(f"{outdir}/{title}.md", 'w') as fout:
             fout.write(f"# {page['title']}\n")
             fout.write(f"Created: {page['created']}\n") 
