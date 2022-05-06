@@ -26,8 +26,8 @@ def main():
 
         with open(f"{outdir}/{title}.md", 'w') as fout:
             fout.write(f"# {page['title']}\n")
-            fout.write(f"Created: {page['created']}\n") 
-            fout.write(f"Updated: {page['created']}\n")
+            fout.write(f"Created: [{page['created']}]\n") 
+            fout.write(f"Updated: [{page['created']}]\n")
              
             iscode = False
             for line in page["lines"][1:]:
@@ -36,6 +36,17 @@ def main():
                 if line.startswith("[**"):
                     line = line.replace('[**','').replace(']','')
                     fout.write(f"## {line}\n")
+
+                # [$ ] indicates an equation, and is replaced with $ $.
+                # Note: if several equations are in a line, this if-statement does not work properly. 
+                # This is currenly only for one equation in a line.
+                elif "[$" in line:
+                    line = line.replace('[$ ','$')
+                    idx_lastbrace = line.rfind(']')# Find the last match ']'
+                    line_list     = list(line)
+                    line_list[idx_lastbrace] = '$' # last "]" is replaced with $
+                    line = "".join(line_list)      # converting to a string
+                    fout.write(f"{line}\n")
 
                 elif not line.startswith(' ') and iscode: 
                     # Fri  6 May 2022 21:58:23 JST
