@@ -65,7 +65,8 @@ def main():
                     fout.write(f"{line}\n")
                     iscode = True
 
-                else:
+                # In scrapbox, [ ] denotes a link, which is converted to '[[ ]]' for obsidian link format.
+                elif:
                     line = line.replace('[','[[').replace(']',']]')
                     fout.write(f"{line}\n")
                 
