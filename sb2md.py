@@ -26,8 +26,8 @@ def main():
 
         with open(f"{outdir}/{title}.md", 'w') as fout:
             fout.write(f"# {page['title']}\n")
-            fout.write(f"Created: [{page['created']}]\n") 
-            fout.write(f"Updated: [{page['created']}]\n")
+            fout.write(f"Created: [[{page['created']}]]\n") 
+            fout.write(f"Updated: [[{page['updated']}]]\n")
              
             iscode = False
             for line in page["lines"][1:]:
@@ -66,7 +66,9 @@ def main():
                     iscode = True
 
                 # In scrapbox, [ ] denotes a link, which is converted to '[[ ]]' for obsidian link format.
-                elif:
+                elif '[$' not in line:
+                    # ^ meaning there does not exist an equation in a line.
+                    # Why do so? Because I dont' want to replace non-link braces with [[ ]].
                     line = line.replace('[','[[').replace(']',']]')
                     fout.write(f"{line}\n")
                 
