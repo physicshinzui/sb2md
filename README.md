@@ -1,8 +1,10 @@
-# Scrapboxのbackupをmarkdown形式に変換するスクリプト
+# Converter from a JSION file (Scrapbox's backup) to markdown files
 
-# Usage 
-`python sb2md.py scrapbox_bk.json`
-を実行すると、scrapbox_bkというディレクトリが作成され、配下にmarkdownファイル群が生成される。
+# How to use
+
+`python sb2md.py foo.json`
+
+When you execute this, the directory `foo` is created in which markdown files are put. 
 
 # Licence 
 MIT licence
