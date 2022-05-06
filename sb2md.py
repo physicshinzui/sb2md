@@ -44,6 +44,7 @@ def main():
                     fout.write(f"```\n{line}\n")
                     iscode = False
 
+                # $ indicates a oneline command in scrapbox, so it is replaced with `$ `.
                 elif line.startswith("$"):
                     line = line.replace('$ ','`$ ') + '`'
                     fout.write(f"{line}\n")
