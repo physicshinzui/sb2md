@@ -17,6 +17,7 @@ def main():
 
     print(json_content.keys())
     pages = json_content['pages']
+#    print(pages)
     for i, page in enumerate(pages):
         print(f"\nPage No. {i}")
         print(page['title'])
@@ -72,7 +73,7 @@ def main():
                     line = line.replace('[','[[').replace(']',']]')
                     fout.write(f"{line}\n")
                 
-        print(page["lines"])
+        #print(page["lines"])
 
 if __name__ == "__main__":
     main()
